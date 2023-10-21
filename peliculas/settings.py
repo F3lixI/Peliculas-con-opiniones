@@ -26,8 +26,10 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', False).lower() == "true"
+#DEBUG = True
 
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(',')
+#ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -89,6 +91,7 @@ DATABASES = {
 database_url = os.environ.get('DATABASE_URL')
 
 DATABASES['default'] = dj_database_url.parse(database_url)
+#DATABASES['default'] = dj_database_url.parse("postgres://peliculas_opiniones_user:Iw6kwYSI7PkG7kbebKaiEtipWJPOJMju@dpg-ckpi9ohrfc9c73c1jv3g-a.oregon-postgres.render.com/peliculas_opiniones")
 
 
 # Password validation

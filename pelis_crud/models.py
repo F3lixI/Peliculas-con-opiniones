@@ -9,7 +9,6 @@ class Usuario(models.Model):
         return self.usuario.username
 
 class Pelicula(models.Model):
-    id = models.IntegerField(primary_key=True)
     titulo = models.CharField(max_length=200)
     director = models.CharField(max_length=100)
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE, default=None, null=True)
