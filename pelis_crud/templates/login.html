@@ -73,6 +73,15 @@
 </head>
 <body>
     <h2>Inicia sesión</h2>
+
+    {% if form.errors %}
+        {% if form.errors['__all__'].data[-1].code == 'blocked' %}
+            <p class="error">Tu cuenta está bloqueada debido a múltiples intentos de inicio de sesión fallidos. Por favor, espera un momento e inténtalo de nuevo.</p>
+        {% else %}
+            <p class="error">Usuario o contraseña incorrectos.</p>
+        {% endif %}
+    {% endif %}
+
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}

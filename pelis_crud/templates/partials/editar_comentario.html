@@ -1,13 +1,64 @@
 <h2>Editar Comentario</h2>
+
+
+<div>
+    <br>
     <form method="post" action="{% url 'editar_comentario' comentario.id %}">
         {% csrf_token %}
         <input type="text" name="texto" value="{{ comentario.texto }}">
         <button type="submit">Guardar edición</button>
     </form>
 
+    <br>
+
+    <a href="{% url 'pelicula' comentario.pelicula.id %}">Volver a la película</a>
+</div>
 
 
 
+
+
+<style>
+    body {
+        background-color: #333;
+        color: #fff;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 10px;
+        padding: 0;
+    }
+
+    a {
+        color: #ffffff;
+        
+    }
+
+    button {
+        background-color: #007BFF;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    div {
+        height: 200px;
+        width: 400px;
+        margin: 20px 0;
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-style: solid;
+        border-width: 4px;
+        border-color: #ffffff;
+
+    }
+
+
+</style>
 
 
 

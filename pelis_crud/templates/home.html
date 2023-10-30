@@ -111,12 +111,27 @@
 
 <body>
     <h1>Películas</h1>
+
+    <!-- search -->
+    <form method="get" action="{% url 'buscar' %}">
+        <input type="text" name="q" value="{{ request.GET.q }}" placeholder="Buscar películas por título o director">
+        <button type="submit">Buscar</button>
+    </form>
+    
+
     <!-- logout -->
     <form action="{% url 'logout' %}" method="post">
         {% csrf_token %}
         <button id="logout" type="submit">Cerrar sesión</button>
     </form>
+
+        <!-- add movie -->
+        <a href="{% url 'agregar_pelicula' %}">Agregar película</a>
+
+        <!-- profile -->
+        <a href="{% url 'ver_perfil' %}">Ver perfil</a>
     <ul>
+        
         {% for pelicula in peliculas %}
         <li>
             <strong>Título:</strong> {{ pelicula.titulo }}<br>
@@ -129,19 +144,7 @@
     <br><br>
 
 
-    <!-- search -->
-    <form method="get" action="{% url 'buscar' %}">
-        <input type="text" name="q" value="{{ request.GET.q }}" placeholder="Buscar películas por título o director">
-        <button type="submit">Buscar</button>
-    </form>
 
-
-
-    <!-- add movie -->
-    <a href="{% url 'agregar_pelicula' %}">Agregar película</a>
-
-    <!-- profile -->
-    <a href="{% url 'ver_perfil' %}">Ver perfil</a>
 </body>
 
 </html>

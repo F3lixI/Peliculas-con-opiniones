@@ -23,12 +23,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get("SECRET_KEY")
+#SECRET_KEY = '7f02da3d7599b5b099b7e7d24a2ae11d'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', False).lower() == "true"
 #DEBUG = True
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(',')
+#ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(',')
 #ALLOWED_HOSTS = ['*']
 
 
@@ -91,7 +92,6 @@ DATABASES = {
 database_url = os.environ.get('DATABASE_URL')
 
 DATABASES['default'] = dj_database_url.parse(database_url)
-#DATABASES['default'] = dj_database_url.parse("postgres://peliculas_opiniones_user:Iw6kwYSI7PkG7kbebKaiEtipWJPOJMju@dpg-ckpi9ohrfc9c73c1jv3g-a.oregon-postgres.render.com/peliculas_opiniones")
 
 
 # Password validation
@@ -134,3 +134,11 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_ATTEMPTS_LIMIT = 3
+LOGIN_ATTEMPTS_TIMEOUT = 900 
+
+LOGIN_ATTEMPTS = {
+    'MAX_ATTEMPTS': LOGIN_ATTEMPTS_LIMIT,
+    'TIMEOUT': LOGIN_ATTEMPTS_TIMEOUT,
+}
